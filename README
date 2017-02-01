@@ -12,11 +12,11 @@
 
 Joana:
 
+Need this so we can use millisecond precision in log timestamps for https://github.com/jmftrindade/loggedfs
+
 == INSTALL ==
-```
 libtoolize --force
 ./reconfig.sh
 ./configure
 make
-make install
-```
+sudo make install
