@@ -1,7 +1,7 @@
 
 INCLUDES = $(all_includes) $(USER_INCLUDES) -I$(top_srcdir)
 # build everything in the "rlog" component.. 
-AM_CXXFLAGS = -DRLOG_COMPONENT="rlog" -DUSE_VALGRIND=@USE_VALGRIND@
+AM_CXXFLAGS = -DRLOG_COMPONENT="rlog" -DUSE_VALGRIND=@USE_VALGRIND@ -std=c++11
 
 
 lib_LTLIBRARIES = librlog.la

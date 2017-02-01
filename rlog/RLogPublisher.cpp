@@ -24,10 +24,12 @@
 #include "rloglocation.h"
 #include "rlog.h"
 
+#include <chrono>
 #include <stdio.h>
 #include <stdarg.h>
 #include <string.h> // in case we need memcpy
 
+using namespace std::chrono;
 using namespace rlog;
 
 
@@ -132,7 +134,9 @@ void RLogPublisher::PublishVA( PublishLoc *loc, RLogChannel *,
     RLogData data;
 
     data.publisher = loc;
-    data.time = time(0);
+    data.millis_since_epoch = duration_cast<milliseconds>(
+        system_clock::now().time_since_epoch()
+    );
     data.msg = 0;
 
     char msgBuf[64];

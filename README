@@ -10,4 +10,13 @@
 
  For more information see the documentation in the docs directory.
 
+Joana:
 
+== INSTALL ==
+```
+libtoolize --force
+./reconfig.sh
+./configure
+make
+make install
+```

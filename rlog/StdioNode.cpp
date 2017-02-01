@@ -157,23 +157,13 @@ void
 StdioNode::publish( const RLogData &data )
 {
     char timeStamp[32];
-    time_t errTime = data.time;
-    tm currentTime;
-   
-#ifdef HAVE_LOCALTIME_R
-    localtime_r( &errTime, &currentTime );
-#else
-    currentTime = *localtime( &errTime );
-#endif
 
     const char *color = NULL;
     if(colorize)
     {
-	sprintf(timeStamp, "%s%02i:%02i:%02i%s ",
+	sprintf(timeStamp, "%d ",
 		kGreenColor,
-		currentTime.tm_hour,
-		currentTime.tm_min,
-		currentTime.tm_sec,
+		data.millis_since_epoch,
 		kNormalColor);
     
 	string channel = data.publisher->channel->name();
@@ -196,10 +186,8 @@ StdioNode::publish( const RLogData &data )
 	}
     } else
     {
-	sprintf(timeStamp, "%02i:%02i:%02i ",
-		currentTime.tm_hour,
-		currentTime.tm_min,
-		currentTime.tm_sec);
+	sprintf(timeStamp, "%d ",
+		data.millis_since_epoch);
     }
 
 #ifdef USE_STRSTREAM
