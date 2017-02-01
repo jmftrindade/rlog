@@ -20,7 +20,6 @@
 #ifndef _RLogNode_incl_
 #define _RLogNode_incl_
 
-#include <chrono>
 #include <list>
 #include <set>
 #include <time.h>
@@ -50,7 +49,7 @@ namespace rlog
 	struct PublishLoc *publisher;
 
 	//! time of publication, in milliseconds since epoch
-	std::chrono::milliseconds millis_since_epoch;
+	unsigned long long millis_since_epoch;
 
 	//! formatted msg - gets destroyed when publish() call returns.
 	const char *msg; 

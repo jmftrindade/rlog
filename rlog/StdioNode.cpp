@@ -156,12 +156,12 @@ StdioNode::subscribeTo( RLogNode *node )
 void
 StdioNode::publish( const RLogData &data )
 {
-    char timeStamp[32];
+    char timeStamp[256];
 
     const char *color = NULL;
     if(colorize)
     {
-	sprintf(timeStamp, "%d ",
+	sprintf(timeStamp, "%s%llu%s ",
 		kGreenColor,
 		data.millis_since_epoch,
 		kNormalColor);
@@ -186,7 +186,7 @@ StdioNode::publish( const RLogData &data )
 	}
     } else
     {
-	sprintf(timeStamp, "%d ",
+	sprintf(timeStamp, "%llu ",
 		data.millis_since_epoch);
     }
 

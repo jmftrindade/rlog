@@ -134,9 +134,8 @@ void RLogPublisher::PublishVA( PublishLoc *loc, RLogChannel *,
     RLogData data;
 
     data.publisher = loc;
-    data.millis_since_epoch = duration_cast<milliseconds>(
-        system_clock::now().time_since_epoch()
-    );
+    data.millis_since_epoch = duration_cast<milliseconds>
+	(system_clock::now().time_since_epoch()).count();
     data.msg = 0;
 
     char msgBuf[64];
